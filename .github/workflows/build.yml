@@ -39,11 +39,11 @@ jobs:
       SLANG_VERSION: 2.3.3
       NEWT_VERSION: 0.52.23
       POPT_VERSION: 1.19
-      LIBIMOBILEDEVICE_COMMIT: ed0d66d0341562731bb19928dfe48155509fa7a7
-      LIBIRECOVERY_COMMIT: 7ce02c347b7c26e59498e6af31c9da51018d0fa1
-      LIBIMOBILEDEVICE_GLUE_COMMIT: 362f7848ac89b74d9dd113b38b51ecb601f76094
-      LIBPLIST_COMMIT: 2117b8fdb6b4096455bd2041a63e59a028120136
-      LIBUSBMUXD_COMMIT: a7f0543fb1ecb20ac7121c0fd77297200e0e43fc
+      LIBPLIST_COMMIT: 2cd858c679d25633077ca78b67182a9b77653816
+      LIBIMOBILEDEVICE_GLUE_COMMIT: 214bafdde6a1434ead87357afe6cb41b32318495
+      LIBIRECOVERY_COMMIT: 7d78cc162c613dcc78aefad757b62056185cf0d9
+      LIBUSBMUXD_COMMIT: 30e678d4e76a9f4f8a550c34457dab73909bdd92
+      LIBIMOBILEDEVICE_COMMIT: 04c023317f616b4b9588cce8c2da3174a7d2086b
 
     steps:
       - name: Checkout
@@ -83,11 +83,11 @@ jobs:
           git clone --depth=1 https://github.com/libimobiledevice/libusbmuxd
           git clone --depth=1 https://github.com/libimobiledevice/libimobiledevice
           cd libplist && git fetch origin ${{ env.LIBPLIST_COMMIT }} && git reset --hard ${{ env.LIBPLIST_COMMIT }} && cd ..
-          cd libirecovery && git fetch origin ${{ env.LIBIRECOVERY_COMMIT }} && git reset --hard ${{ env.LIBIRECOVERY_COMMIT }} && cd ..
           cd libimobiledevice-glue && git fetch origin ${{ env.LIBIMOBILEDEVICE_GLUE_COMMIT }} && git reset --hard ${{ env.LIBIMOBILEDEVICE_GLUE_COMMIT }} && cd ..
-          cd libimobiledevice && git fetch origin ${{ env.LIBIMOBILEDEVICE_COMMIT }} && git reset --hard ${{ env.LIBIMOBILEDEVICE_COMMIT }} && cd ..
+          cd libirecovery && git fetch origin ${{ env.LIBIRECOVERY_COMMIT }} && git reset --hard ${{ env.LIBIRECOVERY_COMMIT }} && cd ..
           cd libusbmuxd && git fetch origin ${{ env.LIBUSBMUXD_COMMIT }} && git reset --hard ${{ env.LIBUSBMUXD_COMMIT }} && cd ..
-
+          cd libimobiledevice && git fetch origin ${{ env.LIBIMOBILEDEVICE_COMMIT }} && git reset --hard ${{ env.LIBIMOBILEDEVICE_COMMIT }} && cd ..
+          
       - name: Select correct Xcode
         run: |
           sudo xcode-select -s /Applications/Xcode_16.2.app
